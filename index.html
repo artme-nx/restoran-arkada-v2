@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restoran Arkada — Biograd na Moru | Večeri uz svjetlo svijeća</title>
+<meta name="description" content="Restoran Arkada, Biograd na Moru — dalmatinska riba i gradela uz svjetlo svijeća pod kamenim arkadama. Mediteranska kuhinja i obiteljska tradicija uz Jadran.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1A1A1A;
+  --bg-soft:#222020;
+  --panel:#262321;
+  --gold:#C8A45C;
+  --gold-soft:#D9BE82;
+  --cream:#F2EAD9;
+  --muted:#A39A8A;
+  --line:#3A3631;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--cream);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.08;letter-spacing:.005em}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 36px}
+.eyebrow{font-family:'DM Sans';font-weight:500;font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+
+/* Header */
+header{position:fixed;top:0;left:0;width:100%;z-index:100;padding:26px 0;transition:.45s ease}
+header.scrolled{background:rgba(26,26,26,.82);backdrop-filter:blur(12px);padding:16px 0;box-shadow:0 1px 0 var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.5rem;letter-spacing:.06em;color:var(--cream)}
+.brand small{display:block;font-family:'DM Sans';font-weight:400;font-size:.58rem;letter-spacing:.36em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.nav-links{display:flex;gap:38px;align-items:center}
+.nav-links a{font-size:.8rem;letter-spacing:.05em;color:var(--muted);transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.btn-res{font-family:'DM Sans';font-weight:500;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold);padding:12px 26px;border-radius:40px;transition:.35s}
+.btn-res:hover{background:var(--gold);color:var(--bg)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+.menu-toggle span{width:26px;height:1.5px;background:var(--cream);display:block}
+
+/* Hero */
+.hero{position:relative;height:100vh;min-height:680px;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.15);will-change:transform}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,26,.55) 0%,rgba(26,26,26,.4) 40%,rgba(26,26,26,.92) 100%)}
+.hero-inner{position:relative;z-index:2;width:100%}
+.hero .eyebrow{display:block;margin-bottom:26px}
+.hero h1{font-size:clamp(3.2rem,9vw,8rem);font-weight:500;color:var(--cream);margin-bottom:24px}
+.hero h1 em{font-style:italic;color:var(--gold-soft)}
+.hero-lead{font-size:1.18rem;max-width:34ch;color:#D8D0C2;font-weight:300}
+.hero-scroll{position:absolute;bottom:38px;left:50%;transform:translateX(-50%);z-index:3;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.word{display:inline-block;overflow:hidden;vertical-align:top}
+.word>span{display:inline-block;transform:translateY(110%)}
+
+/* Manifest */
+.manifest{padding:140px 0;text-align:center;background:var(--bg-soft)}
+.manifest .eyebrow{margin-bottom:34px}
+.manifest p{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3.1rem);line-height:1.32;font-weight:300;max-width:22ch;margin:0 auto;color:var(--cream)}
+.manifest em{font-style:italic;color:var(--gold-soft)}
+
+/* Column motif */
+.cols{display:flex;justify-content:center;gap:0;margin-top:70px;height:1px}
+.col-line{width:1px;height:60px;background:linear-gradient(var(--gold),transparent);margin:0 28px;transform-origin:top}
+
+/* Story */
+.story{padding:140px 0}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-img{position:relative;overflow:hidden;aspect-ratio:4/5;border-radius:300px 300px 0 0}
+.story-img img{width:100%;height:100%;object-fit:cover}
+.story-img::before{content:'';position:absolute;inset:0;border:1px solid rgba(200,164,92,.3);border-radius:300px 300px 0 0;z-index:2;pointer-events:none}
+.story-text .eyebrow{display:block;margin-bottom:22px}
+.story-text h2{font-size:clamp(2.2rem,4.5vw,3.6rem);margin-bottom:30px;font-weight:500}
+.story-text p{margin-bottom:22px;color:#CFC6B7}
+.story-sign{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.35rem;color:var(--gold-soft);margin-top:14px}
+
+/* Menu */
+.menu{padding:140px 0;background:var(--bg-soft);position:relative}
+.menu-head{text-align:center;margin-bottom:80px}
+.menu-head .eyebrow{display:block;margin-bottom:18px}
+.menu-head h2{font-size:clamp(2.4rem,5vw,4rem);font-weight:500}
+.menu-head h2 em{font-style:italic;color:var(--gold-soft)}
+.menu-cats{display:grid;grid-template-columns:1fr 1fr;gap:30px 70px;max-width:980px;margin:0 auto}
+.menu-cat{margin-bottom:30px}
+.menu-cat>h3{font-size:1.7rem;color:var(--gold);margin-bottom:30px;padding-bottom:16px;border-bottom:1px solid var(--line);font-weight:500;font-style:italic}
+.dish{padding:15px 0;border-bottom:1px solid rgba(58,54,49,.6)}
+.dish:last-child{border-bottom:none}
+.dish h4{font-size:1.3rem;color:var(--cream);margin-bottom:5px;font-weight:500}
+.dish p{font-size:.9rem;color:var(--muted);line-height:1.5}
+.menu-note{text-align:center;margin-top:64px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--muted)}
+
+/* Gallery */
+.gallery{padding:140px 0}
+.gallery .menu-head{margin-bottom:64px}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.gal-grid figure{position:relative;overflow:hidden;border-radius:200px 200px 6px 6px}
+.gal-grid figure:nth-child(2),.gal-grid figure:nth-child(3){border-radius:6px 6px 200px 200px}
+.gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease;filter:brightness(.9)}
+.gal-grid figure:hover img{transform:scale(1.07);filter:brightness(1)}
+.gal-grid .tall{grid-row:span 2}
+.gal-grid img{height:260px}
+.gal-grid .tall img{height:538px}
+
+/* Location */
+.location{padding:140px 0;background:var(--bg-soft)}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:stretch}
+.loc-info .eyebrow{display:block;margin-bottom:18px}
+.loc-info h2{font-size:clamp(2.2rem,4.5vw,3.4rem);margin-bottom:36px;font-weight:500}
+.loc-block{margin-bottom:30px;padding-left:22px;border-left:1px solid var(--gold)}
+.loc-block h5{font-family:'DM Sans';font-weight:500;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.loc-block p{color:#CFC6B7}
+.loc-block a{color:var(--gold-soft)}
+.hours-row{display:flex;justify-content:space-between;max-width:340px;padding:9px 0;border-bottom:1px solid rgba(58,54,49,.6);font-size:.95rem}
+.hours-row span:first-child{color:var(--muted)}
+.map-frame{overflow:hidden;border-radius:240px 240px 10px 10px;min-height:500px;border:1px solid var(--line)}
+.map-frame iframe{width:100%;height:100%;min-height:500px;border:0;filter:invert(.9) hue-rotate(180deg) brightness(.95) contrast(.9)}
+
+/* CTA */
+.cta{padding:150px 0;text-align:center;position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;z-index:0;opacity:.22}
+.cta-bg img{width:100%;height:100%;object-fit:cover}
+.cta .wrap{position:relative;z-index:2}
+.cta .eyebrow{display:block;margin-bottom:24px}
+.cta h2{font-size:clamp(2.6rem,6vw,5rem);font-weight:500;margin-bottom:26px}
+.cta h2 em{font-style:italic;color:var(--gold-soft)}
+.cta p{color:#CFC6B7;max-width:42ch;margin:0 auto 42px;font-size:1.12rem}
+.cta-btn{display:inline-block;font-family:'DM Sans';font-weight:500;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;background:var(--gold);color:var(--bg);padding:20px 52px;border-radius:40px;transition:.35s}
+.cta-btn:hover{background:var(--gold-soft);transform:translateY(-2px)}
+
+/* Footer */
+footer{background:#141414;padding:80px 0 40px;border-top:1px solid var(--line)}
+.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:50px;margin-bottom:60px}
+.foot-brand{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.9rem;color:var(--cream);margin-bottom:14px}
+.foot-brand small{display:block;font-family:'DM Sans';font-weight:400;font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.foot-col h5{font-family:'DM Sans';font-weight:500;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.foot-col p,.foot-col a{display:block;color:var(--muted);font-size:.94rem;margin-bottom:8px;transition:color .3s}
+.foot-col a:hover{color:var(--gold-soft)}
+.foot-bottom{border-top:1px solid var(--line);padding-top:28px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:.78rem;color:#6E665B}
+
+/* Reservation slide-in */
+.res-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);opacity:0;visibility:hidden;transition:.4s;z-index:200}
+.res-overlay.open{opacity:1;visibility:visible}
+.res-panel{position:fixed;top:0;right:0;height:100%;width:min(440px,92vw);background:var(--panel);z-index:201;transform:translateX(100%);transition:transform .5s cubic-bezier(.7,0,.2,1);padding:60px 44px;overflow-y:auto}
+.res-panel.open{transform:translateX(0)}
+.res-panel .eyebrow{display:block;margin-bottom:16px}
+.res-panel h3{font-size:2.2rem;margin-bottom:14px;font-weight:500}
+.res-panel p{color:var(--muted);margin-bottom:28px;font-size:.95rem}
+.res-close{position:absolute;top:28px;right:32px;background:none;border:none;color:var(--cream);font-size:1.6rem;cursor:pointer;line-height:1}
+.res-field{margin-bottom:20px}
+.res-field label{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.res-field input,.res-field select{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--cream);padding:13px 15px;border-radius:6px;font-family:'DM Sans';font-size:.95rem}
+.res-field input:focus,.res-field select:focus{outline:none;border-color:var(--gold)}
+.res-submit{width:100%;background:var(--gold);color:var(--bg);border:none;padding:16px;border-radius:40px;font-family:'DM Sans';font-weight:500;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem;cursor:pointer;transition:.3s;margin-top:8px}
+.res-submit:hover{background:var(--gold-soft)}
+.res-phone{text-align:center;margin-top:24px;font-size:.9rem;color:var(--muted)}
+.res-phone a{color:var(--gold-soft)}
+
+.reveal{opacity:0;transform:translateY(38px)}
+
+@media(max-width:900px){
+  .story-grid,.menu-cats,.loc-grid,.foot-grid{grid-template-columns:1fr;gap:44px}
+  .nav-links{display:none}
+  .menu-toggle{display:flex}
+  .gal-grid{grid-template-columns:1fr 1fr}
+  .gal-grid .tall{grid-row:auto}
+  .gal-grid .tall img{height:260px}
+  .story-img{max-width:480px;margin:0 auto}
+}
+@media(max-width:560px){
+  .wrap{padding:0 22px}
+  .gal-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1!important;transform:none!important}
+  .word>span{transform:none!important}
+  .hero-bg img{transform:scale(1)!important}
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<header id="header">
+  <div class="wrap nav">
+    <div class="brand">Arkada<small>Biograd na Moru</small></div>
+    <nav class="nav-links">
+      <a href="#prica">Priča</a>
+      <a href="#jelovnik">Jelovnik</a>
+      <a href="#galerija">Galerija</a>
+      <a href="#lokacija">Lokacija</a>
+    </nav>
+    <a href="#" class="btn-res" id="openRes">Rezerviraj stol</a>
+    <button class="menu-toggle" aria-label="Izbornik"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"><img id="heroImg" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80" alt="Restoran Arkada navečer, svjetlo svijeća"></div>
+  <div class="hero-inner wrap">
+    <span class="eyebrow reveal">Dalmatinska kuhinja · Biograd na Moru</span>
+    <h1>
+      <span class="word"><span>Večeri</span></span>
+      <span class="word"><span>pod</span></span>
+      <em><span class="word"><span>arkadama</span></span></em>
+    </h1>
+    <p class="hero-lead reveal">Svjetlo svijeća, šum mora i tanjur svježe jadranske ribe — pod kamenim lukovima starog Biograda.</p>
+  </div>
+  <div class="hero-scroll">scroll</div>
+</section>
+
+<section class="manifest">
+  <div class="wrap">
+    <span class="eyebrow reveal">Naša filozofija</span>
+    <p class="reveal">Večer počinje kad se upali prva <em>svijeća</em> — a stol postaje mjesto gdje more, kamen i vrijeme staju zajedno.</p>
+    <div class="cols">
+      <div class="col-line reveal"></div><div class="col-line reveal"></div><div class="col-line reveal"></div><div class="col-line reveal"></div><div class="col-line reveal"></div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="prica">
+  <div class="wrap story-grid">
+    <div class="story-img reveal">
+      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80" alt="Kameni lukovi i topli interijer">
+    </div>
+    <div class="story-text">
+      <span class="eyebrow reveal">Naša priča</span>
+      <h2 class="reveal">Tradicija koja<br>traje uz more</h2>
+      <p class="reveal">Arkada nosi ime po kamenim lukovima koji stoljećima oblikuju biogradsku obalu. Pod njihovom sjenom danju, a uz svjetlo svijeća navečer, naša obitelj već više od dvadeset godina dočekuje goste.</p>
+      <p class="reveal">U starom kraljevskom gradu Biogradu na Moru njegujemo dalmatinsku jednostavnost — svježu ribu s lokalne ribarnice, maslinovo ulje s domaćih maslinika i recepte koji se prenose s koljena na koljeno.</p>
+      <p class="story-sign reveal">— Obitelj Arkada</p>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="jelovnik">
+  <div class="wrap">
+    <div class="menu-head">
+      <span class="eyebrow reveal">Jelovnik</span>
+      <h2 class="reveal">Okusi <em>Jadrana</em></h2>
+    </div>
+    <div class="menu-cats">
+      <div class="menu-cat reveal">
+        <h3>Iz mora</h3>
+        <div class="dish"><h4>Brodet od jadranske ribe</h4><p>Bijela riba i škampi u umaku od rajčice i vina, uz domaću palentu.</p></div>
+        <div class="dish"><h4>Gradela — riba dana</h4><p>Cijela riba s ribarnice na žaru, s maslinovim uljem, češnjakom i peršinom.</p></div>
+        <div class="dish"><h4>Crni rižoto sa sipom</h4><p>Sipa i domaća riža u sipinu crnilu — klasik dalmatinskog stola.</p></div>
+        <div class="dish"><h4>Dagnje na buzaru</h4><p>Svježe dagnje u umaku od bijelog vina, češnjaka i mrvica kruha.</p></div>
+        <div class="dish"><h4>Pjat sirove ribe</h4><p>Carpaccio od tune i orade s limunom, kaparima i maslinovim uljem.</p></div>
+      </div>
+      <div class="menu-cat reveal">
+        <h3>Sa žara i zemlje</h3>
+        <div class="dish"><h4>Janjetina ispod peke</h4><p>Janjetina s krumpirom, pripremana po narudžbi pod tradicionalnom pekom.</p></div>
+        <div class="dish"><h4>Biftek s ružmarinom</h4><p>Juneći biftek na žaru, pečeni krumpir i sezonsko povrće s gradele.</p></div>
+        <div class="dish"><h4>Dalmatinska pašticada</h4><p>Sporo kuhana govedina u umaku od šljiva, posluženo s domaćim njokima.</p></div>
+        <div class="dish"><h4>Marinirane srdele</h4><p>Lagano dimljene srdele s crvenim lukom, octom i maslinovim uljem.</p></div>
+        <div class="dish"><h4>Torta od rogača</h4><p>Desert kuće od rogača i badema, uz domaći sladoled.</p></div>
+      </div>
+    </div>
+    <p class="menu-note reveal">Ponuda ribe ovisi o dnevnom ulovu — pitajte naše osoblje.</p>
+  </div>
+</section>
+
+<section class="gallery" id="galerija">
+  <div class="wrap">
+    <div class="menu-head">
+      <span class="eyebrow reveal">Galerija</span>
+      <h2 class="reveal">Atmosfera <em>večeri</em></h2>
+    </div>
+    <div class="gal-grid">
+      <figure class="tall reveal"><img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=700&q=80" alt="Riba s gradele"></figure>
+      <figure class="reveal"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=700&q=80" alt="Mediteranski tanjur"></figure>
+      <figure class="reveal"><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=80" alt="Plodovi mora"></figure>
+      <figure class="tall reveal"><img src="https://images.unsplash.com/photo-1535007813616-79dc02ba4021?auto=format&fit=crop&w=700&q=80" alt="Biogradska marina"></figure>
+      <figure class="reveal"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=700&q=80" alt="Terasa navečer"></figure>
+      <figure class="reveal"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=700&q=80" alt="Kameni lukovi"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="lokacija">
+  <div class="wrap loc-grid">
+    <div class="loc-info">
+      <span class="eyebrow reveal">Posjetite nas</span>
+      <h2 class="reveal">Na biogradskoj rivi</h2>
+      <div class="loc-block reveal">
+        <h5>Adresa</h5>
+        <p>Biograd na Moru, Zadarska županija, Hrvatska</p>
+      </div>
+      <div class="loc-block reveal">
+        <h5>Rezervacije</h5>
+        <p><a href="tel:+38598757394">+385 98 757 394</a><br><a href="mailto:arkada@zd.t-com.hr">arkada@zd.t-com.hr</a></p>
+      </div>
+      <div class="loc-block reveal">
+        <h5>Radno vrijeme</h5>
+        <div class="hours-row"><span>Ponedjeljak — Petak</span><span>11:00 — 23:00</span></div>
+        <div class="hours-row"><span>Subota — Nedjelja</span><span>11:00 — 24:00</span></div>
+        <div class="hours-row"><span>Zimski period</span><span>po dogovoru</span></div>
+      </div>
+    </div>
+    <div class="map-frame reveal">
+      <iframe src="https://maps.google.com/maps?q=Restoran+Arkada+Biograd+na+Moru&output=embed" loading="lazy" title="Mapa — Restoran Arkada"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-bg"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1400&q=80" alt=""></div>
+  <div class="wrap">
+    <span class="eyebrow reveal">Dobrodošli</span>
+    <h2 class="reveal">Vaš stol uz <em>svijeće</em></h2>
+    <p class="reveal">Rezervirajte večer pod arkadama i prepustite se okusima Jadrana.</p>
+    <a href="#" class="cta-btn reveal" id="openRes2">Rezerviraj stol</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Restoran Arkada<small>Biograd na Moru</small></div>
+        <p style="color:var(--muted);max-width:32ch;font-size:.94rem">Dalmatinska riba i gradela uz svjetlo svijeća, pod kamenim arkadama jadranske obale.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Kontakt</h5>
+        <a href="tel:+38598757394">+385 98 757 394</a>
+        <a href="mailto:arkada@zd.t-com.hr">arkada@zd.t-com.hr</a>
+        <p>Biograd na Moru, Hrvatska</p>
+      </div>
+      <div class="foot-col">
+        <h5>Radno vrijeme</h5>
+        <p>Pon — Pet · 11 — 23h</p>
+        <p>Sub — Ned · 11 — 24h</p>
+        <a href="#jelovnik">Jelovnik</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Restoran Arkada · Biograd na Moru</span>
+      <span>Dalmatinska & mediteranska kuhinja</span>
+    </div>
+  </div>
+</footer>
+
+<div class="res-overlay" id="resOverlay"></div>
+<aside class="res-panel" id="resPanel" aria-hidden="true">
+  <button class="res-close" id="resClose" aria-label="Zatvori">×</button>
+  <span class="eyebrow">Rezervacija</span>
+  <h3>Rezerviraj stol</h3>
+  <p>Ostavite podatke ili nas nazovite — javit ćemo vam se za potvrdu.</p>
+  <form onsubmit="event.preventDefault();this.querySelector('.res-submit').textContent='Hvala — nazvat ćemo vas';">
+    <div class="res-field"><label>Ime i prezime</label><input type="text" required placeholder="Vaše ime"></div>
+    <div class="res-field"><label>Telefon</label><input type="tel" required placeholder="+385 ..."></div>
+    <div class="res-field"><label>Datum</label><input type="date"></div>
+    <div class="res-field"><label>Broj osoba</label>
+      <select><option>2 osobe</option><option>3 osobe</option><option>4 osobe</option><option>5 osoba</option><option>6+ osoba</option></select>
+    </div>
+    <button type="submit" class="res-submit">Pošalji upit</button>
+  </form>
+  <p class="res-phone">ili nazovite <a href="tel:+38598757394">+385 98 757 394</a></p>
+</aside>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if(!reduce){
+  const lenis = new Lenis({lerp:.085,wheelMultiplier:.95});
+  function raf(t){lenis.raf(t);requestAnimationFrame(raf)}
+  requestAnimationFrame(raf);
+  if(window.ScrollTrigger){lenis.on('scroll',ScrollTrigger.update);}
+}
+
+const header=document.getElementById('header');
+addEventListener('scroll',()=>{header.classList.toggle('scrolled',scrollY>40)});
+
+if(!reduce && window.gsap){
+  gsap.registerPlugin(ScrollTrigger);
+  // breathing zoom on load
+  gsap.to('#heroImg',{scale:1,duration:2.4,ease:'power2.out'});
+  // word reveal
+  gsap.to('.word>span',{y:'0%',duration:1.1,stagger:.12,ease:'power3.out',delay:.3});
+  // hero lead
+  gsap.to('.hero-lead',{opacity:1,y:0,duration:1,delay:.9,ease:'power2.out'});
+  // reveals
+  gsap.utils.toArray('.reveal').forEach(el=>{
+    if(el.classList.contains('hero-lead'))return;
+    gsap.to(el,{opacity:1,y:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%'}});
+  });
+  // column lines grow
+  gsap.utils.toArray('.col-line').forEach((el,i)=>{
+    gsap.fromTo(el,{scaleY:0},{scaleY:1,duration:1,delay:i*.08,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 92%'}});
+  });
+  // parallax hero
+  gsap.to('#heroImg',{yPercent:14,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+} else {
+  document.querySelectorAll('.reveal').forEach(e=>{e.style.opacity=1;e.style.transform='none'});
+  document.querySelectorAll('.word>span').forEach(e=>e.style.transform='none');
+}
+
+// Reservation panel
+const overlay=document.getElementById('resOverlay'),panel=document.getElementById('resPanel');
+function openRes(e){if(e)e.preventDefault();overlay.classList.add('open');panel.classList.add('open');panel.setAttribute('aria-hidden','false')}
+function closeRes(){overlay.classList.remove('open');panel.classList.remove('open');panel.setAttribute('aria-hidden','true')}
+document.getElementById('openRes').addEventListener('click',openRes);
+document.getElementById('openRes2').addEventListener('click',openRes);
+document.getElementById('resClose').addEventListener('click',closeRes);
+overlay.addEventListener('click',closeRes);
+addEventListener('keydown',e=>{if(e.key==='Escape')closeRes()});
+</script>
+</body>
+</html>
