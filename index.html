@@ -376,7 +376,7 @@ footer{background:#141414;padding:80px 0 40px;border-top:1px solid var(--line)}
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if(!reduce){
-  const lenis = new Lenis({lerp:.085,wheelMultiplier:.95});
+  const lenis = new Lenis({lerp:0.2, wheelMultiplier:1, smoothWheel:true, syncTouch:false});
   function raf(t){lenis.raf(t);requestAnimationFrame(raf)}
   requestAnimationFrame(raf);
   if(window.ScrollTrigger){lenis.on('scroll',ScrollTrigger.update);}
