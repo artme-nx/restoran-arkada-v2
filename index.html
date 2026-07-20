@@ -51,7 +51,7 @@ header.scrolled{background:rgba(26,26,26,.82);backdrop-filter:blur(12px);padding
 .menu-toggle span{width:26px;height:1.5px;background:var(--cream);display:block}
 
 /* Hero */
-.hero{position:relative;height:100vh;min-height:680px;display:flex;align-items:center;overflow:hidden}
+.hero{position:relative;height:100vh;height:100svh;min-height:680px;display:flex;align-items:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.15);will-change:transform}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,26,.55) 0%,rgba(26,26,26,.4) 40%,rgba(26,26,26,.92) 100%)}
@@ -205,7 +205,7 @@ footer{background:#141414;padding:80px 0 40px;border-top:1px solid var(--line)}
 </header>
 
 <section class="hero">
-  <div class="hero-bg"><img id="heroImg" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80" alt="Restoran Arkada navečer, svjetlo svijeća"></div>
+  <div class="hero-bg"><img id="heroImg" src="img/arkada-eksterijer-natpis.webp" alt="Restoran Arkada u Biogradu — ulaz s natpisom ARKADA RESTAURANT"></div>
   <div class="hero-inner wrap">
     <span class="eyebrow reveal">Dalmatinska kuhinja · Biograd na Moru</span>
     <h1>
@@ -231,7 +231,7 @@ footer{background:#141414;padding:80px 0 40px;border-top:1px solid var(--line)}
 <section class="story" id="prica">
   <div class="wrap story-grid">
     <div class="story-img reveal">
-      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80" alt="Kameni lukovi i topli interijer">
+      <img src="img/arkada-terasa.webp" alt="Natkrivena terasa Restorana Arkada sa stolovima u hladu">
     </div>
     <div class="story-text">
       <span class="eyebrow reveal">Naša priča</span>
@@ -278,12 +278,12 @@ footer{background:#141414;padding:80px 0 40px;border-top:1px solid var(--line)}
       <h2 class="reveal">Atmosfera <em>večeri</em></h2>
     </div>
     <div class="gal-grid">
-      <figure class="tall reveal"><img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=700&q=80" alt="Riba s gradele"></figure>
-      <figure class="reveal"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=700&q=80" alt="Mediteranski tanjur"></figure>
-      <figure class="reveal"><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=80" alt="Plodovi mora"></figure>
-      <figure class="tall reveal"><img src="https://images.unsplash.com/photo-1535007813616-79dc02ba4021?auto=format&fit=crop&w=700&q=80" alt="Biogradska marina"></figure>
-      <figure class="reveal"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=700&q=80" alt="Terasa navečer"></figure>
-      <figure class="reveal"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=700&q=80" alt="Kameni lukovi"></figure>
+      <figure class="tall reveal"><img src="img/arkada-riba-plata.webp" alt="Cijela riba s gradela na pladnju, s limunom i peršinom"></figure>
+      <figure class="reveal"><img src="img/arkada-crni-rizoto.webp" alt="Crni rižoto sa sipom"></figure>
+      <figure class="reveal"><img src="img/arkada-lignje.webp" alt="Pržene lignje s pečenim povrćem"></figure>
+      <figure class="tall reveal"><img src="img/arkada-srdele.webp" alt="Srdele s gradela uz krumpir salatu"></figure>
+      <figure class="reveal"><img src="img/arkada-riblja-plata.webp" alt="Sipa na crno s rižom, servirana na dugom pladnju"></figure>
+      <figure class="reveal"><img src="img/arkada-mjesano-pomfrit.webp" alt="Miješano meso s roštilja s pomfritom"></figure>
     </div>
   </div>
 </section>
@@ -315,7 +315,7 @@ footer{background:#141414;padding:80px 0 40px;border-top:1px solid var(--line)}
 </section>
 
 <section class="cta">
-  <div class="cta-bg"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1400&q=80" alt=""></div>
+  <div class="cta-bg"><img src="img/arkada-grill-njoki.webp" alt=""></div>
   <div class="wrap">
     <span class="eyebrow reveal">Dobrodošli</span>
     <h2 class="reveal">Vaš stol uz <em>svijeće</em></h2>
@@ -376,9 +376,9 @@ footer{background:#141414;padding:80px 0 40px;border-top:1px solid var(--line)}
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if(!reduce){
-  const lenis = new Lenis({lerp:0.2, wheelMultiplier:1, smoothWheel:true, syncTouch:false});
-  function raf(t){lenis.raf(t);requestAnimationFrame(raf)}
-  requestAnimationFrame(raf);
+  const lenis = new Lenis({lerp:0.1, wheelMultiplier:1, smoothWheel:true, syncTouch:false}); window.__lenis = lenis;
+  gsap.ticker.add(function(t){ lenis.raf(t*1000); });
+  gsap.ticker.lagSmoothing(0);
   if(window.ScrollTrigger){lenis.on('scroll',ScrollTrigger.update);}
 }
 
@@ -418,6 +418,48 @@ document.getElementById('openRes2').addEventListener('click',openRes);
 document.getElementById('resClose').addEventListener('click',closeRes);
 overlay.addEventListener('click',closeRes);
 addEventListener('keydown',e=>{if(e.key==='Escape')closeRes()});
+</script>
+
+<script>
+/* QA scroll-fix — glatko, bez lomova i preskakanja (mobitel prioritet) */
+(function(){
+  var lenis = window.__lenis || null;
+
+  /* jedinstveni smooth-scroll ulaz: Lenis ako postoji, inače nativni */
+  window.__smoothTo = function(target){
+    var el = (typeof target === 'string') ? document.querySelector(target) : target;
+    if(!el) return;
+    if(lenis){ lenis.scrollTo(el, {offset:0, duration:1.1}); }
+    else { el.scrollIntoView({behavior:'smooth', block:'start'}); }
+  };
+
+  /* anchor linkovi kroz isti ulaz — nema nativnog skoka preko Lenisa */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    var href = a.getAttribute('href');
+    if(!href || href === '#') return;
+    a.addEventListener('click', function(e){
+      var el = document.querySelector(href);
+      if(!el) return;
+      e.preventDefault();
+      window.__smoothTo(el);
+      if(history.replaceState) history.replaceState(null, '', href);
+    });
+  });
+
+  /* ScrollTrigger pozicije preračunati kad se layout slegne (slike!) */
+  if(window.ScrollTrigger){
+    var refresh = function(){ ScrollTrigger.refresh(); };
+    window.addEventListener('load', refresh);
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+    document.querySelectorAll('img').forEach(function(img){
+      if(!img.complete) img.addEventListener('load', refresh, {once:true});
+    });
+    var rt; window.addEventListener('resize', function(){
+      clearTimeout(rt); rt = setTimeout(refresh, 150);
+    }, {passive:true});
+    setTimeout(refresh, 600);
+  }
+})();
 </script>
 </body>
 </html>
